@@ -1,0 +1,81 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.3.10/schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"files": {
+		"ignoreUnknown": false,
+		"includes": ["**", "!**/node_modules", "!**/build", "!**/.react-router"]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab"
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"correctness": {
+				"useExhaustiveDependencies": "info",
+				"noEmptyPattern": "off"
+			},
+			"suspicious": {
+				"noArrayIndexKey": "off",
+				"noDoubleEquals": "off",
+				"noDocumentCookie": "off"
+			},
+			"nursery": {
+				"useSortedClasses": {
+					"level": "warn",
+					"fix": "safe",
+					"options": {
+						"functions": ["clsx", "cva", "cn"]
+					}
+				}
+			},
+			"security": {
+				"noDangerouslySetInnerHtml": "off"
+			},
+			"a11y": {
+				"noSvgWithoutTitle": "off",
+				"noRedundantRoles": "off",
+				"useSemanticElements": "off",
+				"useAriaPropsForRole": "off",
+				"useFocusableInteractive": "off",
+				"useKeyWithClickEvents": "off"
+			},
+			"style": {
+				"noParameterAssign": "error",
+				"useAsConstAssertion": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useSelfClosingElements": "error",
+				"useSingleVarDeclarator": "error",
+				"noUnusedTemplateLiteral": "error",
+				"useNumberNamespace": "error",
+				"noInferrableTypes": "error",
+				"noUselessElse": "error"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "double"
+		}
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	}
+}
