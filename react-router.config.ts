@@ -5,4 +5,7 @@ export default {
 	// Server-side render by default, to enable SPA mode set this to `false`
 	ssr: false,
 	appDirectory: "src",
+	future: {
+		v8_middleware: true,
+	},
 } satisfies Config;

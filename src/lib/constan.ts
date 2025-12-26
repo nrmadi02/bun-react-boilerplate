@@ -1,1 +1,3 @@
-export const BASE_API_URL = "http://100.116.54.72:5002/api/v1";
+const env = import.meta.env;
+
+export const BASE_API_URL = env.VITE_BASE_API_URL;

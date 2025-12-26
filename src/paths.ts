@@ -7,5 +7,6 @@ export const PATHS = {
 	dashboard: {
 		home: "/home",
 		users: "/users",
+		verify: "/verify-email",
 	},
 };
