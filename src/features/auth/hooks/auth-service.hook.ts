@@ -1,27 +1,55 @@
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
-import { BASE_API_URL } from "~/lib/constan";
-import type { IBaseResponse } from "~/types/base-response.type";
-import { TOKEN_KEY } from "../providers/auth.provider";
-import type { IResendEmailVerificationResponse } from "../types/auth.type";
-import type { ResendEmailVerificationRequest } from "../types/auth-request.type";
+import { api } from "~/lib/api/axios-instance";
+import type {
+	ILoginResponse,
+	IResendEmailVerificationResponse,
+} from "../types/auth.type";
+import type {
+	LoginRequest,
+	RegisterRequest,
+	ResendEmailVerificationRequest,
+} from "../types/auth-request.type";
 
-const token = localStorage.getItem(TOKEN_KEY);
+export const authService = {
+	login: (data: LoginRequest) => api.post<ILoginResponse>("/auth/login", data),
+	register: (data: RegisterRequest) => api.post<true>("/auth/register", data),
+	resendEmailVerification: (data: ResendEmailVerificationRequest) =>
+		api.post<IResendEmailVerificationResponse>(
+			"/auth/resend-verification",
+			data,
+		),
+};
+
+export const useLogin = (data: LoginRequest) => {
+	const mutateLogin = useMutation({
+		mutationFn: async () => {
+			return authService.login(data);
+		},
+	});
+
+	return {
+		mutateLogin,
+	};
+};
+
+export const useRegister = (data: RegisterRequest) => {
+	const mutateRegister = useMutation({
+		mutationFn: async () => {
+			return authService.register(data);
+		},
+	});
+
+	return {
+		mutateRegister,
+	};
+};
 
 export const useResendEmailVerification = (
 	data: ResendEmailVerificationRequest,
 ) => {
 	const mutateEmailVerification = useMutation({
 		mutationFn: async () => {
-			return axios.post<IBaseResponse<IResendEmailVerificationResponse>>(
-				`${BASE_API_URL}/auth/resend-verification`,
-				data,
-				{
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				},
-			);
+			return authService.resendEmailVerification(data);
 		},
 	});
 
