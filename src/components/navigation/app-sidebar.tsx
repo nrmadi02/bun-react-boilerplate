@@ -65,7 +65,7 @@ export function AppSidebar() {
 					<span className="font-semibold text-lg">Dashboard</span>
 				</div>
 			</SidebarHeader>
-			<SidebarContent>
+			<SidebarContent className="px-4 py-5">
 				<SidebarMenu>
 					{navigation.map((item) => (
 						<SidebarMenuItem key={item.href}>

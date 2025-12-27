@@ -26,8 +26,6 @@ export function Header() {
 		<header className="flex h-16 shrink-0 items-center justify-between border-b bg-background px-4">
 			<div className="flex items-center gap-2">
 				<SidebarTrigger className="-ml-1" />
-				<div className="h-4 w-px bg-border" />
-				<h1 className="font-semibold text-lg">Welcome back!</h1>
 			</div>
 
 			<Popover>
