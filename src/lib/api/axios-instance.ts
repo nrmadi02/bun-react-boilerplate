@@ -5,7 +5,10 @@ import axios, {
 } from "axios";
 import { TOKEN_KEY } from "~/features/auth/providers/auth.provider";
 import { BASE_API_URL } from "~/lib/constan";
-import type { IBaseResponse } from "~/types/base-response.type";
+import type {
+	IBaseResponse,
+	IBaseResponseList,
+} from "~/types/base-response.type";
 
 const axiosInstance: AxiosInstance = axios.create({
 	baseURL: BASE_API_URL,
@@ -46,6 +49,9 @@ axiosInstance.interceptors.response.use(
 export const api = {
 	get: <T = unknown>(url: string, config?: AxiosRequestConfig) =>
 		axiosInstance.get<IBaseResponse<T>>(url, config),
+
+	getList: <T = unknown>(url: string, config?: AxiosRequestConfig) =>
+		axiosInstance.get<IBaseResponseList<T>>(url, config),
 
 	post: <T = unknown>(
 		url: string,
